@@ -1,2 +1,10 @@
+# vim:ft=ansible:
 ---
-# vars file for liquidfeedback-core
+
+lf_home: /opt
+
+lf_core_version: v3.0.4
+lf_core_dir: "{{ lf_home }}/liquid_feedback_core-{{ lf_core_version }}"
+
+lf_pg_db: liquidfeedback
+lf_pg_user: lf_user
