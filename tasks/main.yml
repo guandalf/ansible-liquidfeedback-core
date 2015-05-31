@@ -1,22 +1,6 @@
 # vim:ft=ansible:
 ---
 
-- name: Ensure PostgreSQL dev packages are installed
-  apt:
-    name: "postgresql-server-dev-{{ postgresql_version }}"
-    state: present
-    update_cache: yes
-
-- name: Ensure PostgreSQL database '{{ lf_pg_db }}' exists
-  postgresql_db:
-    name: "{{ lf_pg_db }}"
-
-- name: Ensure PostgreSQL user '{{ lf_pg_user }}' exists and has permissions on database '{{ lf_pg_db }}'
-  postgresql_user:
-    db: "{{ lf_pg_db }}"
-    name: "{{ lf_pg_user }}"
-    priv: ALL
-
 - name: Download Liquid Feedback Core {{lf_core_version}} source code
   get_url:
     url: http://www.public-software-group.org/pub/projects/liquid_feedback/backend/{{ lf_core_version }}/liquid_feedback_core-{{ lf_core_version }}.tar.gz
@@ -34,3 +18,27 @@
   args:
     chdir: "{{ lf_core_dir }}"
     creates: "{{ lf_core_dir }}/lf_update"
+
+- name: Ensure PostgreSQL dev packages are installed
+  apt:
+    name: "postgresql-server-dev-{{ postgresql_version }}"
+    state: present
+    update_cache: yes
+
+- name: Ensure PostgreSQL database '{{ lf_pg_db }}' exists
+  postgresql_db:
+    name: "{{ lf_pg_db }}"
+
+- name: Ensure PostgreSQL user '{{ lf_pg_user }}' exists and has permissions on database '{{ lf_pg_db }}'
+  postgresql_user:
+    db: "{{ lf_pg_db }}"
+    name: "{{ lf_pg_user }}"
+    priv: ALL
+
+- name: Ensure initial SQL is loaded
+  shell: "psql -U {{ lf_pg_user }} -v ON_ERROR_STOP=1 -f core.sql {{ lf_pg_db }} && touch {{ lf_core_dir }}/sql_loaded"
+  args:
+    chdir: "{{ lf_core_dir }}"
+    creates: "{{ lf_core_dir }}/sql_loaded"
+  tags:
+    - sql
