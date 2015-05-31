@@ -3,10 +3,6 @@ liquidfeedback_core
 
 Ansible role to install [Liquid Feedback](http://liquidfeedback.org).
 
-Requirements
-------------
-
--
 
 Role Variables
 --------------
@@ -20,11 +16,13 @@ lf_pg_db: liquid_feedback
 lf_pg_user: lf_user
 ```
 
+
 Dependencies
 ------------
 
 * ANXS.PostgreSQL
 * ANXS.monit
+
 
 Example Playbook
 ----------------
@@ -35,10 +33,12 @@ Example Playbook
 	 - siliconheavy.liquidfeedback_core
 ```
 
+
 License
 -------
 
 GPLv3
+
 
 Author Information
 ------------------
