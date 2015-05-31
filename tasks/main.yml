@@ -25,11 +25,11 @@
     state: present
     update_cache: yes
 
-- name: Ensure PostgreSQL database '{{ lf_pg_db }}' exists
+- name: Ensure PostgreSQL database exists
   postgresql_db:
     name: "{{ lf_pg_db }}"
 
-- name: Ensure PostgreSQL user '{{ lf_pg_user }}' exists and has permissions on database '{{ lf_pg_db }}'
+- name: Ensure PostgreSQL user exists and has permissions on database
   postgresql_user:
     db: "{{ lf_pg_db }}"
     name: "{{ lf_pg_user }}"
