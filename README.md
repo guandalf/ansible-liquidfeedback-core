@@ -1,7 +1,8 @@
 liquidfeedback_core
 ===================
 
-Ansible role to install [Liquid Feedback](http://liquidfeedback.org).
+Ansible role to install [Liquid Feedback
+Core](http://dev.liquidfeedback.org/trac/lf/wiki/Core)
 
 
 Role Variables
