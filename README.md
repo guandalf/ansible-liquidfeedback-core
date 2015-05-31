@@ -12,6 +12,8 @@ Role Variables
 lf_home: /opt
 
 lf_core_version: v3.0.4
+# How often, in minutes, to run lf_update and friends
+lf_core_update_freq: 5
 
 lf_pg_db: liquid_feedback
 lf_pg_user: lf_user
