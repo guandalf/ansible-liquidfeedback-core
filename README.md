@@ -8,7 +8,7 @@ Core](http://dev.liquidfeedback.org/trac/lf/wiki/Core)
 Role Variables
 --------------
 
-```
+```yaml
 lf_home: /opt
 
 lf_core_version: v3.0.4
