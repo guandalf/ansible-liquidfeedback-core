@@ -42,10 +42,10 @@
     chdir: "{{ lf_core_dir }}"
     creates: "{{ lf_core_dir }}/sql_loaded"
 
-# TODO: Cron jobs should probably be run as a different user than root
 - name: Ensure crontab entry exists for lf_update
   cron:
     name: Update Liquid Feedback DB
+    user: postgres
     job: "{{ lf_core_dir }}/lf_update dbname={{ lf_pg_db }}"
     minute: "*/{{ lf_core_update_freq }}"
     state: present
@@ -53,6 +53,7 @@
 - name: Ensure crontab entry exists for lf_issue_order
   cron:
     name: Update Liquid Feedback Issue Order
+    user: postgres
     job: "{{ lf_core_dir }}/lf_issue_order dbname={{ lf_pg_db }}"
     minute: "*/{{ lf_core_update_freq }}"
     state: present
@@ -60,6 +61,7 @@
 - name: Ensure crontab entry exists for lf_suggestion_order
   cron:
     name: Update Liquid Feedback Suggestion Order
+    user: postgres
     job: "{{ lf_core_dir }}/lf_suggestion_order dbname={{ lf_pg_db }}"
     minute: "*/{{ lf_core_update_freq }}"
     state: present
