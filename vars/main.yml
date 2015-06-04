@@ -1,0 +1,5 @@
+# vim:ft=ansible:
+---
+
+lf_core_dir: "{{ lf_home }}/liquid_feedback_core-{{ lf_core_version }}"
+

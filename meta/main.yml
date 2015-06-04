@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Jason McVetta
+  description: Install Liquid Feedback Core
+  company: Silicon Beach Heavy Industries
+  license: GPLv3
+  min_ansible_version: 1.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+  categories:
+    - database
+dependencies: 
+  - Stouts.postfix
+  - ANXS.monit
+  - ANXS.postgresql
