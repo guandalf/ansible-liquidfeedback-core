@@ -11,7 +11,4 @@ galaxy_info:
         - trusty
   categories:
     - database
-dependencies: 
-  - Stouts.postfix
-  - ANXS.monit
-  - ANXS.postgresql
+dependencies: []
