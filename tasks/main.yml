@@ -18,7 +18,6 @@
   apt:
     name: "postgresql-server-dev-{{ postgresql_version }}"
     state: present
-    update_cache: yes
 
 - name: Ensure lf_update binary is compiled
   shell: make
