@@ -14,10 +14,13 @@
     creates: "{{ lf_core_dir }}/core.sql"
 
 # Must install PG dev packages to compile lf_update
-- name: Ensure PostgreSQL dev packages are installed
+- name: Ensure APT package depenencies are installed
   apt:
-    name: "postgresql-server-dev-{{ postgresql_version }}"
+    name: "{{ item }}"
     state: present
+  with_items:
+    - build-essential
+    - "postgresql-server-dev-{{ postgresql_version }}"
 
 - name: Ensure lf_update binary is compiled
   shell: make
