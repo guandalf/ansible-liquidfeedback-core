@@ -1,3 +1,4 @@
+# vim: ft=ansible:
 ---
 
 lf_home: /opt
@@ -8,3 +9,6 @@ lf_core_update_freq: 5
 
 lf_pg_db: liquid_feedback
 lf_pg_user: lf_user
+
+# Used to install PG dev packages
+postgresql_version: 9.3
