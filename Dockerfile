@@ -8,6 +8,8 @@ MAINTAINER  Jason McVetta "https://github.com/jmcvetta"
 
 RUN apt-get update
 RUN apt-get dist-upgrade -y
+# Installing build-essential takes a while, so we want it cached
+RUN apt-get install -y build-essential
 
 #ENV			DEBIAN_FRONTEND noninteractive
 #ENV         JENKINS_HOME /var/lib/jenkins
