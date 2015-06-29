@@ -1,0 +1,9 @@
+# vim: ft=ansible:
+---
+
+- name: Ensure Liquid Feedback Core is installed
+  hosts: docker
+  sudo: yes
+  roles:
+    - siliconheavy.liquidfeedback_core
+
