@@ -6,12 +6,14 @@ FROM        ansible/ubuntu14.04-ansible:stable
 
 MAINTAINER  Jason McVetta "https://github.com/jmcvetta"
 
+RUN apt-get update
+RUN apt-get dist-upgrade -y
+
 #ENV			DEBIAN_FRONTEND noninteractive
 #ENV         JENKINS_HOME /var/lib/jenkins
 #ENV         WORKDIR /home/vagrant
 
-RUN apt-get update
-RUN apt-get dist-upgrade -y
+ENV	PYTHONUNBUFFERED	true
 
 WORKDIR /tmp/ansible
 
@@ -21,6 +23,7 @@ COPY handlers roles/siliconheavy.liquidfeedback_core/handlers
 COPY tasks roles/siliconheavy.liquidfeedback_core/tasks
 COPY vars roles/siliconheavy.liquidfeedback_core/vars
 
+COPY docker-ansible.cfg /etc/ansible/ansible.cfg
 COPY docker-hosts /etc/ansible/hosts
 COPY docker.yml docker.yml
 
