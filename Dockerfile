@@ -10,6 +10,8 @@ RUN apt-get update
 RUN apt-get dist-upgrade -y
 # Installing build-essential takes a while, so we want it cached
 RUN apt-get install -y build-essential
+RUN apt-get install -y postgresql-server-dev-9.3
+RUN apt-get install -y python-psycopg2
 
 #ENV			DEBIAN_FRONTEND noninteractive
 #ENV         JENKINS_HOME /var/lib/jenkins
