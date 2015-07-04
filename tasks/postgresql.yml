@@ -1,0 +1,24 @@
+# vim:ft=ansible:
+---
+
+- name: Ensure python-psycopg2 package is installed
+  apt:
+    name: python-psycopg2
+    state: present
+
+- name: Ensure PostgreSQL database exists
+  postgresql_db:
+    name: "{{ lf_pg_db }}"
+
+- name: Ensure PostgreSQL user exists and has permissions on database
+  postgresql_user:
+    db: "{{ lf_pg_db }}"
+    name: "{{ lf_pg_user }}"
+    priv: ALL
+
+- name: Ensure initial SQL is loaded
+  shell: "psql -U {{ lf_pg_user }} -v ON_ERROR_STOP=1 -f core.sql {{ lf_pg_db }} && touch {{ lf_core_dir }}/sql_loaded"
+  args:
+    chdir: "{{ lf_core_dir }}"
+    creates: "{{ lf_core_dir }}/sql_loaded"
+
