@@ -13,5 +13,3 @@ galaxy_info:
     - database
 dependencies: 
   - Stouts.postfix
-  - ANXS.monit
-  - ANXS.postgresql
