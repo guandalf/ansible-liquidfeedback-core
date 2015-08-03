@@ -8,3 +8,5 @@ lf_core_update_freq: 5
 
 lf_pg_db: liquid_feedback
 lf_pg_user: lf_user
+
+postgresql_version: 9.4
