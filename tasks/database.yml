@@ -9,3 +9,13 @@
   environment:
     PGPASSWORD: "{{ lf_pg_password }}"
 
+- name: Ensure default Admin user is created
+  shell: "psql -U {{ lf_pg_user }} -v ON_ERROR_STOP=1 -f init.sql {{ lf_pg_db }} && touch {{ lf_core_dir }}/admin_created"
+  args:
+    chdir: "{{ lf_core_dir }}"
+    creates: "{{ lf_core_dir }}/admin_created"
+  environment:
+    PGPASSWORD: "{{ lf_pg_password }}"
+  when: lf_create_admin
+
+

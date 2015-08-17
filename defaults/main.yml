@@ -1,5 +1,8 @@
 ---
 
+# Should we create an admin user with an empty password?
+lf_create_admin: false 
+
 lf_home: /opt
 
 lf_core_version: v3.0.4
